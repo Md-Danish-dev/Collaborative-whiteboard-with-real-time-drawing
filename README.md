@@ -59,15 +59,15 @@ collaborative-whiteboard/
 git clone https://github.com/your-username/collaborative-whiteboard.git
 cd collaborative-whiteboard
 
-### 1. Start the Backend
+1. Start the Backend
 cd server
 npm install
 node index.js
 
-### 1. Start the Frontend
+2. Start the Frontend
 cd client
 npm install
 npm run dev
 
 
-Made with Md Danish
+Made by Md Danish

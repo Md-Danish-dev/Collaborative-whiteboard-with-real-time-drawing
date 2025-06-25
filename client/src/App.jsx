@@ -5,7 +5,6 @@ import { Route, Router, Routes } from 'react-router-dom';
 import Room from './components/room.js/room';
 import io from 'socket.io-client';
 import {toast, ToastContainer} from 'react-toastify';
-// import { connectWithSocketServer } from './components/socketConn/socketConn';
 
 const serverUrl = 'http://localhost:5000';
 const connectionOption ={
