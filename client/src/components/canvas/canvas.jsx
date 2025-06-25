@@ -3,7 +3,17 @@ import rough from "roughjs/bundled/rough.esm";
 
 const generator = rough.generator();
 
-const Canvas = ({ canvasRef, ctx, color, setElements, elements, tool, strokeWidth, user, socket }) => {
+const Canvas = ({
+  canvasRef,
+  ctx,
+  color,
+  setElements,
+  elements,
+  tool,
+  strokeWidth,
+  user,
+  socket,
+}) => {
   const [isDrawing, setIsDrawing] = useState(false);
   const [img, setImg] = useState(null);
 
@@ -53,11 +63,17 @@ const Canvas = ({ canvasRef, ctx, color, setElements, elements, tool, strokeWidt
       switch (ele.element) {
         case "rect":
           roughCanvas.draw(
-            generator.rectangle(ele.offsetX, ele.offsetY, ele.width, ele.height, {
-              stroke: ele.stroke,
-              strokeWidth: ele.strokeWidth,
-              roughness: 0,
-            })
+            generator.rectangle(
+              ele.offsetX,
+              ele.offsetY,
+              ele.width,
+              ele.height,
+              {
+                stroke: ele.stroke,
+                strokeWidth: ele.strokeWidth,
+                roughness: 0,
+              }
+            )
           );
           break;
         case "circle":
@@ -229,4 +245,3 @@ const Canvas = ({ canvasRef, ctx, color, setElements, elements, tool, strokeWidt
 };
 
 export default Canvas;
-

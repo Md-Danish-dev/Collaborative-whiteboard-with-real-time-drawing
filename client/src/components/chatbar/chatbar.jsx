@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { FaPaperPlane, FaTimes } from "react-icons/fa";
 
 const Chat = ({ setOpenedChatTab, socket, user }) => {
@@ -7,18 +7,17 @@ const Chat = ({ setOpenedChatTab, socket, user }) => {
 
   useEffect(() => {
     socket.on("messageResponse", (data) => {
-      setChat(prev => [...prev, data]);
+      setChat((prev) => [...prev, data]);
     });
-
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (message.trim() !== "") {
-        setChat(prev => [...prev, { message, userName: "You" }]);
-        socket.emit("message", {
-          message 
-        });
+      setChat((prev) => [...prev, { message, userName: "You" }]);
+      socket.emit("message", {
+        message,
+      });
     }
     setMessage("");
   };

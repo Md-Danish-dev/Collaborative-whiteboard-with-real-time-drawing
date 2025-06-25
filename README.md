@@ -68,6 +68,11 @@ node index.js
 cd client
 npm install
 npm run dev
+```
+## 🌐 Live Demo
+
+- **Frontend:** [Live App](https://collaborative-whiteboard-with-real-time.vercel.app)
+- **Backend:** [API Server](https://collaborative-whiteboard-with-real-time-v8w4.onrender.com)
 
 
-Made by Md Danish
+Made with 💖 by Md Danish

@@ -20,7 +20,10 @@ const Room = ({ user, socket, users }) => {
     const newElements = elements.slice(0, -1);
     setHistory(newHistory);
     setElements(newElements);
-    socket.emit("whiteboardStateUpdate", { elements: newElements, history: newHistory });
+    socket.emit("whiteboardStateUpdate", {
+      elements: newElements,
+      history: newHistory,
+    });
   };
 
   const redo = () => {
@@ -29,7 +32,10 @@ const Room = ({ user, socket, users }) => {
     const newHistory = history.slice(0, -1);
     setElements(newElements);
     setHistory(newHistory);
-    socket.emit("whiteboardStateUpdate", { elements: newElements, history: newHistory });
+    socket.emit("whiteboardStateUpdate", {
+      elements: newElements,
+      history: newHistory,
+    });
   };
 
   const clearCanvas = () => {
@@ -90,14 +96,14 @@ const Room = ({ user, socket, users }) => {
         <div className="w-full flex flex-col sm:flex-row justify-between items-center mb-6 px-4">
           <button
             onClick={openSideBar}
-            className="fixed top-4 left-2 z-50 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded shadow flex items-center gap-2"
+            className="fixed top-4 left-2 z-50 bg-blue-600 hover:bg-gray-700 text-white px-4 py-2 rounded shadow flex items-center gap-2"
           >
-            <FaUser className="h-5 w-5 text-white" />
+            <FaUser className="h-5 w-5  text-white" />
             Users
           </button>
           <button
             onClick={() => setOpenedChatTab(true)}
-            className="fixed top-4 left-30 z-50 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded shadow flex items-center gap-2"
+            className="fixed top-4 left-30 z-50 bg-blue-600 hover:bg-gray-700 text-white px-4 py-2 rounded shadow flex items-center gap-2"
           >
             <FaUser className="h-5 w-5 text-white" />
             Chats
@@ -128,13 +134,11 @@ const Room = ({ user, socket, users }) => {
               ))}
             </div>
           </div>
-          {
-            openedChatTab && (
-              <Chat setOpenedChatTab={setOpenedChatTab} socket={socket} />
-            )
-          }
+          {openedChatTab && (
+            <Chat setOpenedChatTab={setOpenedChatTab} socket={socket} />
+          )}
 
-          <h1 className="text-3xl font-bold tracking-wide ">
+          <h1 className="text-3xl font-bold tracking-wide mt-7 left-1">
             Users Online: {users.length}
           </h1>
 
@@ -155,7 +159,7 @@ const Room = ({ user, socket, users }) => {
                 <input
                   type="range"
                   min="1"
-                  max="15"
+                  max="20"
                   value={strokeWidth}
                   onChange={(e) => setStrokeWidth(Number(e.target.value))}
                   className="w-24 cursor-pointer accent-yellow-400"

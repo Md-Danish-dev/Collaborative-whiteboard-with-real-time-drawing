@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
 const JoinCreateRoom = ({ socket, setUser }) => {
@@ -23,7 +23,9 @@ const JoinCreateRoom = ({ socket, setUser }) => {
   const handleCreateRoom = (e) => {
     e.preventDefault();
     if (!userName || accessType === "") {
-      alert("Please enter your name and select one access type for friends (Edit/View)");
+      alert(
+        "Please enter your name and select one access type for friends (Edit/View)"
+      );
       return;
     }
 
@@ -33,7 +35,7 @@ const JoinCreateRoom = ({ socket, setUser }) => {
       userId: uuidv4(),
       host: true,
       presenter: true,
-      friendsAccess: accessType  
+      friendsAccess: accessType,
     };
 
     localStorage.setItem(`access-${roomId}`, accessType);
@@ -61,7 +63,7 @@ const JoinCreateRoom = ({ socket, setUser }) => {
       roomId: joinRoomId,
       userId: uuidv4(),
       host: false,
-      presenter: access === "edit"
+      presenter: access === "edit",
     };
 
     setUser(roomData);
@@ -76,7 +78,7 @@ const JoinCreateRoom = ({ socket, setUser }) => {
       </h1>
 
       <div className="w-screen grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 px-4 md:px-8">
-      <div className="bg-[#1e293b] border border-blue-500 rounded-xl shadow-xl p-8 w-full">
+        <div className="bg-[#1e293b] border border-blue-500 rounded-xl shadow-xl p-8 w-full">
           <h2 className="text-2xl font-semibold text-center text-blue-400 mb-6">
             Create Room
           </h2>
@@ -92,7 +94,9 @@ const JoinCreateRoom = ({ socket, setUser }) => {
             </div>
 
             <div className="flex flex-col gap-2 mb-4">
-              <p className="text-sm text-gray-300">Choose the access type for others:</p>
+              <p className="text-sm text-gray-300">
+                Choose the access type for others:
+              </p>
               <label className="flex items-center gap-2">
                 <input
                   type="radio"
@@ -129,14 +133,18 @@ const JoinCreateRoom = ({ socket, setUser }) => {
                   setGenerateUId(true);
                   setTimeout(() => setGenerateUId(false), 600);
                 }}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded cursor-pointer"
+                className={`px-4 py-2 bg-blue-600 hover:bg-blue-700 text-sm rounded cursor-pointer ${
+                  generateUId ? "text-green-400 font-semibold" : "text-white"
+                }`}
               >
                 {generateUId ? "Generated!" : "Generate"}
               </button>
               <button
                 type="button"
                 onClick={CopyGeneratedRoomId}
-                className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white text-sm rounded cursor-pointer"
+                className={`px-4 py-2 bg-gray-700 hover:bg-gray-600  text-sm rounded cursor-pointer ${
+                  copied ? "text-green-400 font-semibold" : "text-white"
+                }`}
               >
                 {copied ? "Copied!" : "Copy"}
               </button>
@@ -144,7 +152,7 @@ const JoinCreateRoom = ({ socket, setUser }) => {
             <button
               type="submit"
               onClick={handleCreateRoom}
-              className="w-full bg-white text-blue-400 font-semibold py-2 rounded hover:bg-gray-200 transition-all"
+              className="w-full bg-white text-blue-400 font-semibold py-2 rounded hover:bg-gray-200 transition-all cursor-pointer"
             >
               Create Room
             </button>
@@ -179,7 +187,7 @@ const JoinCreateRoom = ({ socket, setUser }) => {
             <button
               type="submit"
               onClick={handleJoinRoom}
-              className="w-full bg-white text-green-400 font-semibold py-2 rounded hover:bg-gray-200 transition-all"
+              className="w-full bg-white text-green-400 font-semibold py-2 rounded hover:bg-gray-200 transition-all cursor-pointer"
             >
               Join Room
             </button>
