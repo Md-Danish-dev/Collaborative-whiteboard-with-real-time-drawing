@@ -5,11 +5,12 @@ const { Server } = require('socket.io');
 const cors = require('cors');
 const { addUser, removeUser, getUser } = require('./utils/users');
 
+require('dotenv').config();
 app.use(cors());
 
 const io = new Server(server, {
   cors: {
-    origin: "*",
+    origin: process.env.CORS_ORIGIN || "*",
     methods: ["GET", "POST"]
   }
 });
